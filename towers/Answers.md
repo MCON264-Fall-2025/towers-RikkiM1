@@ -14,11 +14,13 @@ Each part reinforces a key concept of recursion — base case, recursive case, a
 _Describe the base condition that stops recursion (for example, what happens when `n == 0`?)._
 
 > ✎ Your answer here
-
+when n==0 it means that there are no more disks on the peg so nothing else needs to be moved so it means that everything is in place. 
 ### 2. Recursive Case
 _Explain the sequence of recursive calls and what each represents._
 
 > ✎ Your answer here
+solve(n-1, from, to, aux, moves); this takes the next disk and moves from its current peg to the middle peg B
+>     solve(n-1, aux, from, to, moves); this takes the disk that is on the middle peg and moves it to the  peg C
 
 ### 3. Sample Trace (for n = 3)
 
@@ -39,23 +41,23 @@ _Total moves = 2ⁿ − 1 = 7 (for n = 3)_
 _How did you modify the standard recursion to count rather than print moves?_
 
 >  Your answer here
-
+I added a variable to be incrimented every take we entered the else statement and moved a disk
 ### 2. Verification of Formula
 _Complete the table and verify that count = 2ⁿ − 1._
 
-| n | Expected (2ⁿ − 1) | Program Output | Matches? (Y/N) |
-|:--:|:--:|:--:|:--:|
-| 1 | 1 |  |  |
-| 2 | 3 |  |  |
-| 3 | 7 |  |  |
-| 4 | 15 |  |  |
-| 5 | 31 |  |  |
+| n | Expected (2ⁿ − 1) | Program Output  | Matches? (Y/N) |
+|:--:|:--:|:---------------:|:--------------:|
+| 1 | 1 |        1        |       1        |
+| 2 | 3 |        7        |      127       |
+| 3 | 7 |       127       |                |
+| 4 | 15 |      32767      |                |
+| 5 | 31 | 2.14748365*10^9 |                |
 
 ### 3. Reflection
 _What changes when you replace printed moves with a counter? What are the pros and cons?_
 
 > ✎ Your answer here
-
+a pro is that you can see how many times you moved but you cant see clearly all the moves taking place
 ---
 
 ## Part 3 — Hanoi Variation (`TowersVariations.java`)
@@ -64,7 +66,7 @@ _What changes when you replace printed moves with a counter? What are the pros a
 _Every move must pass through the middle peg. How does this alter the recursion?_
 
 > ✎ Your answer here
-
+because now there is an added task that must be done every time the recusrion  is called
 ### 2. Observed Move Counts
 
 | n | Expected ≈ 3ⁿ − 1 | Program Output | Matches? (Y/N) |
@@ -78,8 +80,8 @@ _Every move must pass through the middle peg. How does this alter the recursion?
 _Why does this variation grow faster than the standard version? How do additional move constraints affect complexity?_
 
 > ✎ Your answer here
-
----
+Because each move now requires two sub-moves through the middle peg, the total number of operations grows.
+> Adding more restrictions increases the exponential growth rate and thus the time complexity---
 
 ## Comparative Analysis
 
@@ -98,6 +100,16 @@ _Estimate the maximum recursion depth before StackOverflowError and discuss how 
 
 ---
 
+
+I wrote this code myslef:
+TowersExercise21 but chatGPT told me that i did my count++ wrong because i orginally did 1 after each statement but relaly only needed one
+
+I wrote this code myself:
+TowersOfHanoi
+
+ChatGPT helped me with this code: solveVariation
+
+I undertsand all the concepts but I am still very confused on all the meaning and how the code runs. 
 ## Part 4 — Beyond Recursion (Extra Credit)
 
 ### Iterative / Explicit-Stack Version (`TowersIterative.java`)
