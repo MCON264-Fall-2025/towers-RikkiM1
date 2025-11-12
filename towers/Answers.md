@@ -24,13 +24,15 @@ solve(n-1, from, to, aux, moves); this takes the next disk and moves from its cu
 
 ### 3. Sample Trace (for n = 3)
 
-| Move # | From | To |
-|:--:|:--:|:--:|
-| 1 | A | C |
-| 2 | A | B |
-| 3 | C | B |
-| … |  |  |
-
+| Move # | From |  To  |
+|:------:|:----:|:----:|
+|   1    |  A   |  C   |
+|   2    |  A   |  B   |
+|   3    |  C   |  B   |
+|   4    |  A   |  C   |
+    5       B       A
+    6       B       C
+    7       A       C
 _Total moves = 2ⁿ − 1 = 7 (for n = 3)_
 
 ---
@@ -45,14 +47,15 @@ I added a variable to be incrimented every take we entered the else statement an
 ### 2. Verification of Formula
 _Complete the table and verify that count = 2ⁿ − 1._
 
-| n | Expected (2ⁿ − 1) | Program Output  | Matches? (Y/N) |
-|:--:|:--:|:---------------:|:--------------:|
-| 1 | 1 |        1        |       1        |
-| 2 | 3 |        7        |      127       |
-| 3 | 7 |       127       |                |
-| 4 | 15 |      32767      |                |
-| 5 | 31 | 2.14748365*10^9 |                |
-
+| n | Expected (2ⁿ − 1) | Program Output | Matches? (Y/N) |
+|:--:|:--:|:--------------:|:--------------:|
+| 1 | 1 |       1        |       Y        |
+| 2 | 3 |       3        |       Y        |
+| 3 | 7 |       7        |       Y        |
+| 4 | 15 |       15       |       Y        |
+| 5 | 31 |       31       |       Y        |
+    6   63      63                  Y
+    7   127     127                 Y
 ### 3. Reflection
 _What changes when you replace printed moves with a counter? What are the pros and cons?_
 
@@ -70,11 +73,11 @@ because now there is an added task that must be done every time the recusrion  i
 ### 2. Observed Move Counts
 
 | n | Expected ≈ 3ⁿ − 1 | Program Output | Matches? (Y/N) |
-|:--:|:--:|:--:|:--:|
-| 1 | 2 |  |  |
-| 2 | 8 |  |  |
-| 3 | 26 |  |  |
-| 4 | 80 |  |  |
+|:--:|:--:|:--------------:|:--------------:|
+| 1 | 2 |       2        |       y        |
+| 2 | 8 |       8        |       y        |
+| 3 | 26 |       26       |       y        |
+| 4 | 80 |       80       |       y        |
 
 ### 3. Analysis
 _Why does this variation grow faster than the standard version? How do additional move constraints affect complexity?_
@@ -97,12 +100,12 @@ Because each move now requires two sub-moves through the middle peg, the total n
 _Estimate the maximum recursion depth before StackOverflowError and discuss how stack size (–Xss flag) affects this._
 
 > ✎ Your answer here
-
+the maximum recursion depth is however big the stack is. the bigger the stack size the more depth it can hole before it throws a stack overflow. 
 ---
 
 
 I wrote this code myslef:
-TowersExercise21 but chatGPT told me that i did my count++ wrong because i orginally did 1 after each statement but relaly only needed one
+TowersExercise21 but chatGPT told me that i did my count++ wrong because i orginally did 1 after each statement but really only needed one
 
 I wrote this code myself:
 TowersOfHanoi
